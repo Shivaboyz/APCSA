@@ -59,8 +59,8 @@ public class Fraction {
 
 	public Fraction reciprocal(){
 
-		int n = (this.numerator*0)+this.denominator;
-		int d = (this.denominator*0)+this.numerator;
+		int n = this.denominator;
+		int d = this.numerator;
 
 		Fraction result = new Fraction(n,d);
 		return result;

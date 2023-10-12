@@ -41,8 +41,30 @@ public class Fraction {
 
     public Fraction subtract(Fraction other){
 
-        int n = this.numerator*other.denominator + 
+        int n = this.numerator*other.denominator - this.denominator*other.numerator;
+		int d = this.denominator * other.getDenom();
+
+		Fraction result = new Fraction(n,d);
+		return result; 
     }
+
+	public Fraction multiply(Fraction other){
+
+		int n = this.numerator*other.numerator;
+		int d = this.denominator*other.denominator;
+
+		Fraction result = new Fraction(n,d);
+		return result;
+	}
+
+	public Fraction reciprocal(){
+
+		int n = (this.numerator*0)+this.denominator;
+		int d = (this.denominator*0)+this.numerator;
+
+		Fraction result = new Fraction(n,d);
+		return result;
+	}
 	
 	// TODO  subtract()
 	
@@ -60,17 +82,25 @@ public class Fraction {
 		Fraction f3 = f1.add(f2);			// add 2 fractions
 		System.out.println("3/4 + 4/5 = " + f3);	// print the answer
 			
-		/*
+		
 		Fraction f4 = f1.subtract(f2);
 		System.out.println(f1 + " - " + f2 + " = " + f4);
+
+		Fraction f5 = f1.multiply(f2);
+		System.out.println(f1 + " * " + f2 + " = " + f4);
+
+		Fraction f6 = f1.reciprocal(f1);
+		System.out.println(f1 + "'s reciprocal is " + "f6");
+
 		
-		Add code to multiply f1 and f2 here
+		/*Add code to multiply f1 and f2 here
 		
 		Add code to call reciprocal here
 		
 		create 2 new fractions and add them here.
 		
-		*/	
+		 */
+		
 		
 
 	}

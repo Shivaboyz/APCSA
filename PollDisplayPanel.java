@@ -93,10 +93,24 @@ public class PollDisplayPanel extends JPanel
 
     if (total > 0)
     {
-      int degrees;
+      int degrees1;
       g.setColor(Color.RED);
-      degrees = countToDegrees(count1, total);
-      drawSector(g, x, y, r, fromDegree, degrees);
+      degrees1 = countToDegrees(count1, total);
+      drawSector(g, x, y, r, fromDegree, degrees1);
+      fromDegree += degrees1;
+
+
+      int degrees2;
+      g.setColor(Color.GREEN);
+      degrees2 = countToDegrees(count2, total);
+      drawSector(g, x, y, r, fromDegree, degrees2);
+      fromDegree += degrees2;
+
+
+      int degrees3;
+      g.setColor(Color.BLUE);
+      degrees3 = Math.max(360 - fromDegree, 0);
+      drawSector(g, x, y, r, fromDegree, degrees3);
 
       //_________________________________________________
 
@@ -116,11 +130,11 @@ public class PollDisplayPanel extends JPanel
     y += (r + 20);
     g.setColor(Color.BLACK);
 
-    //g.drawString( _______________ , x - r, y);
+    g.drawString( name1 + ": " + count1, x - r, y);
 
-    //g.drawString( _______________ , x, y);
+    g.drawString( name2 + ": " + count2, x, y);
 
-    //g.drawString( _______________ , x + r, y);
+    g.drawString( name3 + ": " + count3, x + r, y);
 
 
     // Display the color squares:
@@ -138,9 +152,9 @@ public class PollDisplayPanel extends JPanel
   // corresponds to count / total, rounded to the nearest integer.
   private int countToDegrees(int count, int total)
   {
-  //____________________________________________________
-    int angle = ()
-    return 0;
+  
+    double angle = ((double)count/total)*360;
+    return (int) angle;
   }
 
 

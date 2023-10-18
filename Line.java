@@ -16,22 +16,27 @@ public class Line {
 	
 	public double distance()
 	{
-        double xd = double x2 - double x1;
-        double xval = Math.pow(double xd, 2);
-        double yd = double y2 - double y1;
-        double yval = Math.pow(double yd, 2);
+       double yd = Math.pow((end2.getY() - end1.getY()), 2);
+       double xd = Math.pow((end2.getX() - end1.getX()), 2);
+       double dist = Math.sqrt((xd + yd));
+	   return dist;
 		//You may find Math.pow(base, power) and Math.sqrt(num) useful
 	}
 	public Point midpoint()
 	{
-		
+
+		Point mid1 = new Point(((end2.getX()+end1.getX())/2), ((end2.getY()+end1.getY())/2));
+		return mid1; 
 	}
 	
 	public boolean sameLength(Line otherLine)
 	{
-		
+		double dist1 = this.distance();
+		double dist2 = otherLine.distance();
+		return Math.abs(dist1-dist2)<=0.0001;
+
 	}
-	*/
+	
 	public double slope()
 	{
 		double m;

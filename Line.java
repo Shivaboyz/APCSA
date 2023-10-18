@@ -13,9 +13,13 @@ public class Line {
 		end1 = new Point();
 		end2 = new Point();
 	}
-	/*
+	
 	public double distance()
 	{
+        double xd = double x2 - double x1;
+        double xval = Math.pow(double xd, 2);
+        double yd = double y2 - double y1;
+        double yval = Math.pow(double yd, 2);
 		//You may find Math.pow(base, power) and Math.sqrt(num) useful
 	}
 	public Point midpoint()

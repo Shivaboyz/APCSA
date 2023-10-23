@@ -62,12 +62,6 @@ public class Line {
 		
 	}
 
-	public double distance() {
-
-`	return Math.sqrt((Math.pow((end2.GetX() - end1.GetX()), 2)) + (Math.pow((end2.GetY() - end1.GetY()), 2)));
-
-	}
-
 
 
 

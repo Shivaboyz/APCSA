@@ -4,13 +4,13 @@ public class Circle {
 
     public Circle(double radius){
 
-        double rad = radius; 
+        this.radius = radius; 
 
     }
     
 
 
-    public double get Area(){
+    public double getArea(){
 
         return Math.PI * Math.pow(radius, 2);
 

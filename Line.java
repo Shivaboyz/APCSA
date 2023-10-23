@@ -62,6 +62,16 @@ public class Line {
 		
 	}
 
+	public double distance() {
+
+`	return Math.sqrt((Math.pow((end2.GetX() - end1.GetX()), 2)) + (Math.pow((end2.GetY() - end1.GetY()), 2)));
+
+	}
+
+
+
+
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Line l1 = new Line(-1,-3, 2,1);
@@ -76,14 +86,14 @@ public class Line {
 		System.out.println("Parallel? " + l1.parallel(l2));
 		
 		
-		//double dist = l1.distance();
-		//Point p1 = l1.midpoint();
+		double dist = l1.distance();
+		Point p1 = l1.midpoint();
 		
-		//System.out.println("distance = " + dist);
-		//System.out.println("Midpoint = " + p1);
+		System.out.println("distance = " + dist);
+		System.out.println("Midpoint = " + p1);
 		
-		//System.out.println("distance = " + l2.distance());
-		//System.out.println("Same length? " + l1.sameLength(l2));
+		System.out.println("distance = " + l2.distance());
+		System.out.println("Same length? " + l1.sameLength(l2));
 
 	}
 

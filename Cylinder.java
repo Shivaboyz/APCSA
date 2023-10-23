@@ -12,7 +12,7 @@ public Cylinder (double radius, double height){
 
 public double vol(){
 
-    return base.getArea() * height;
+    return base.Area() * height;
 
 }
 
@@ -20,7 +20,7 @@ public double vol(){
 
 public double sa(){
 
-    return (height * base.getCircumference()) + (2 * base.getArea());
+    return (height * base.circumf()) + (2 * base.Area());
 }
 
 }

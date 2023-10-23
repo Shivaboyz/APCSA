@@ -10,14 +10,14 @@ public class Circle {
     
 
 
-    public double getArea(){
+    public double Area(){
 
         return Math.PI * Math.pow(radius, 2);
 
     }
 
 
-    public double getCircumference(){
+    public double circumf(){
 
         return 2*Math.PI*radius;
 

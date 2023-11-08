@@ -56,19 +56,32 @@ public class conditionals {
 
     }
 
-    public int blackJack(int num1, int num2) {
-        if (Math.abs(21-num1) > Math.abs(21-num2)) {
+    public int blackjack(int num1, int num2) {
+        if ((num1 <= 21) && (num2 <= 21)) {
+            if (num1 > num2) {
+                return num1;
+            }
+
+            if (num1 == num2) {
+                return num1;
+            }
+
+            else {
+                return num2;
+            }
+        }
+
+        if ((num1 > 21) && (num2 <= 21)) {
             return num2;
         }
 
-        if (Math.abs(21-num1) < Math.abs(21-num2)) {
+        if ((num2 > 21) && (num1 <= 21)) {
             return num1;
         }
 
         else {
             return 0;
-        }
-
+        }  
     }
 
     public static void main(String[] args) {
@@ -108,13 +121,13 @@ public class conditionals {
         System.out.println(cd.onesDigitSame(423,13,3));
         System.out.println(cd.onesDigitSame(23,29,25));
         System.out.println("blackjack() method");
-        System.out.println(cd.blackJack(19,21));
-        System.out.println(cd.blackJack(21,19));
-        System.out.println(cd.blackJack(19,22));
-        System.out.println(cd.blackJack(8,8));
-        System.out.println(cd.blackJack(25,24));
-        System.out.println(cd.blackJack(17,9));
-        System.out.println(cd.blackJack(12,18));
+        System.out.println(cd.blackjack(19,21));
+        System.out.println(cd.blackjack(21,19));
+        System.out.println(cd.blackjack(19,22));
+        System.out.println(cd.blackjack(8,8));
+        System.out.println(cd.blackjack(25,24));
+        System.out.println(cd.blackjack(17,9));
+        System.out.println(cd.blackjack(12,18));
 
     }
 

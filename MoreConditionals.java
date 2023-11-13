@@ -30,7 +30,55 @@ public class MoreConditionals {
 
     public int findBestFit(int space, int size1, int size2) {
 
+        if ((size1 > space) && (size2 > space)) {
+            return 0;
+        }
+
+        if (((size1 < space) && (size2 < space)) && ((size1 + size2) <= space)) {
+            return 3;
+        }
+
+        if ((size2 > size1) && ((size2 <= space) && (size1 <= space))) {
+            return 2;
+        }
+
+        if ((size2 < size1) && ((size2 <= space) && (size1 <= space))) {
+            return 1;
+        }
+
+        if ((size1 > space) && (size2 <= space)) {
+            return 2;
+        }
+
+        if ((size2 > space) && (size1 <= space)) {
+            return 1;
+        }
+        
+        else {
+            return 1;
+        }
     }
+
+    public boolean makeBenches(int small, int big, int goal) {
+        if (((goal % ((5*big) + small)) == 0) || ((goal%(5*big)) == 0) || ((goal%small) == 0)) {
+            return true;
+        }
+
+        if ((small == 0) && ((goal%(5*big)) == 0)) {
+            return true;
+        }
+
+        if ((big == 0) && ((goal%small) == 0)) {
+            return true;
+        }
+
+        else {
+            return false;
+        }
+    }
+
+    
+
 
     public static void main(String[] args) {
         MoreConditionals mc = new MoreConditionals();
@@ -53,8 +101,25 @@ public class MoreConditionals {
         System.out.println("4/8/2010 is sooner than 1/2/2010 " + mc.isSooner(4,8,2010, 1,2,2010));
         // find best fit
         System.out.println("findBestFit");
-        
-
+        System.out.println("Find Best fit 6 2 3 is " + mc.findBestFit(6,2,3));
+        System.out.println("Find Best fit 6 4 3 is " + mc.findBestFit(6,4,3));
+        System.out.println("Find Best fit 6 3 4 is " + mc.findBestFit(6,3,4));
+        System.out.println("Find Best fit 1 2 3 is " + mc.findBestFit(1,2,3));
+        System.out.println("Find Best fit 4 6 3 is " + mc.findBestFit(4,6,3));
+        System.out.println("Find Best fit 4 3 6 is " + mc.findBestFit(4,3,6));
+        System.out.println("Find Best fit 4 3 3 is " + mc.findBestFit(4,3,3));
+        System.out.println("Find Best fit 4 4 3 is " + mc.findBestFit(4,4,3));
+        System.out.println("makeBenches");
+        System.out.println("Make benches 3 1 8 is " + mc.makeBenches(3,1,8));
+        System.out.println("Make benches 3 1 9 is " + mc.makeBenches(3,1,9));
+        System.out.println("Make benches 11 1 15 is " + mc.makeBenches(11,1,15));
+        System.out.println("Make benches 4 2 15 is " + mc.makeBenches(4,2,15));
+        System.out.println("Make benches 20 0 20 is " + mc.makeBenches(20,0,20));
+        System.out.println("Make benches 3 4 20 is " + mc.makeBenches(3,4,20));
+        System.out.println("Make benches 0 6 30 is " + mc.makeBenches(0,6,30));
+        System.out.println("Make benches 0 5 30 is " + mc.makeBenches(0,5,30));
+        System.out.println("Make benches 2 6 23 is " + mc.makeBenches(2,6,23));
+        System.out.println("Make benches 3 2 23 is " + mc.makeBenches(3,2,23));
 
 
     }

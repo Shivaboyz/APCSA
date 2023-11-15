@@ -60,15 +60,41 @@ public class MoreConditionals {
     }
 
     public boolean makeBenches(int small, int big, int goal) {
-        if (((goal % ((5*big) + small)) == 0) || ((goal%(5*big)) == 0) || ((goal%small) == 0)) {
+
+        
+        if (small == 0) {
+            return ((goal%(5*big)) == 0);
+        }
+
+        if (big == 0) {
+            return ((goal%small) == 0);
+        }
+
+        if ((goal%small) == 0) {
             return true;
         }
 
-        if ((small == 0) && ((goal%(5*big)) == 0)) {
+        if ((goal%(5*big)) == 0) {
+            return true;
+        }
+        
+        if (((goal % ((5*big) + small)) == 0)) {
             return true;
         }
 
-        if ((big == 0) && ((goal%small) == 0)) {
+        if ((goal%small) - (5*big) == 0) {
+            return true;
+        }
+
+        if (((big*5)%goal) - small == 0) {
+            return true;
+        }
+
+        if ((goal%small) == (big*5)) {
+            return true;
+        }
+
+        if ((goal%(big*5)) == small) {
             return true;
         }
 

@@ -24,13 +24,13 @@ public class TwoSpinners{
         int ComputerPoints = 0;
 		int EarnedPoints = 0;
 
-        if (ComputerSpin > PlayerSpin) {
+        if (ComputerSpin1 > PlayerSpin1) {
             EarnedPoints = (Math.abs(ComputerSpin1 - PlayerSpin1));
 			PlayerPoints -= EarnedPoints;
             System.out.println("You lose. -" + EarnedPoints + " points.");
         }
 
-        if (ComputerSpin < PlayerSpin) {
+        if (ComputerSpin1 < PlayerSpin1) {
             EarnedPoints = (Math.abs(ComputerSpin1 - PlayerSpin1));
 			PlayerPoints += EarnedPoints;
 			System.out.println("You win! " + EarnedPoints + " points.");

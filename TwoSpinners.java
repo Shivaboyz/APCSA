@@ -18,19 +18,44 @@ public class TwoSpinners{
   	*/
  	public void playRound()
  	{
-        int ComputerSpin = spin(2,8);
-        int PlayerSpin = spin(1,10);
+        int ComputerSpin1 = spin(2,8);
+        int PlayerSpin1 = spin(1,10);
         int PlayerPoints = 0;
         int ComputerPoints = 0;
+		int EarnedPoints = 0;
 
         if (ComputerSpin > PlayerSpin) {
-            PlayerPoints -= (Math.abs(ComputerSpin - PlayerSpin));
-            String s = "You lose. -" + PlayerPoints + "point"
+            EarnedPoints = (Math.abs(ComputerSpin1 - PlayerSpin1));
+			PlayerPoints -= EarnedPoints;
+            System.out.println("You lose. -" + EarnedPoints + " points.");
         }
 
         if (ComputerSpin < PlayerSpin) {
-            PlayerPoints += (Math.abs(ComputerSpin - PlayerSpin));
+            EarnedPoints = (Math.abs(ComputerSpin1 - PlayerSpin1));
+			PlayerPoints += EarnedPoints;
+			System.out.println("You win! " + EarnedPoints + " points.");
         }
+
+		else {
+			int PlayerSpin2 = spin(1,10);
+			int ComputerSpin2 = spin(2,8);
+
+			if ((PlayerSpin2 + PlayerSpin1) > (ComputerSpin1 + ComputerSpin2)) {
+				EarnedPoints ++;
+				PlayerPoints ++;
+				System.out.println("You win! " + EarnedPoints + " points.");
+			}
+
+			if ((PlayerSpin2 + PlayerSpin1) < (ComputerSpin1 + ComputerSpin2)) {
+				EarnedPoints --;
+				PlayerPoints --;
+				System.out.println("You lose. -" + EarnedPoints + " points.");
+			}
+
+			else {
+				System.out.println("Tie. 0 points.");
+			}
+		}
    	    // add code here    	
 	}
 

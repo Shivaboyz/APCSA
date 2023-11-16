@@ -20,20 +20,18 @@ public class TwoSpinners{
  	{
         int ComputerSpin1 = spin(2,8);
         int PlayerSpin1 = spin(1,10);
-        int PlayerPoints = 0;
-        int ComputerPoints = 0;
 		int EarnedPoints = 0;
 
         if (ComputerSpin1 > PlayerSpin1) {
-            EarnedPoints = (Math.abs(ComputerSpin1 - PlayerSpin1));
-			PlayerPoints -= EarnedPoints;
-            System.out.println("You lose. -" + EarnedPoints + " points.");
+			EarnedPoints -= (Math.abs(ComputerSpin1 - PlayerSpin1));
+            System.out.println("You lose. " + EarnedPoints + " points.");
+			EarnedPoints = 0;
         }
 
         if (ComputerSpin1 < PlayerSpin1) {
-            EarnedPoints = (Math.abs(ComputerSpin1 - PlayerSpin1));
-			PlayerPoints += EarnedPoints;
+			EarnedPoints += (Math.abs(ComputerSpin1 - PlayerSpin1));
 			System.out.println("You win! " + EarnedPoints + " points.");
+			EarnedPoints = 0;
         }
 
 		else {
@@ -41,15 +39,11 @@ public class TwoSpinners{
 			int ComputerSpin2 = spin(2,8);
 
 			if ((PlayerSpin2 + PlayerSpin1) > (ComputerSpin1 + ComputerSpin2)) {
-				EarnedPoints ++;
-				PlayerPoints ++;
-				System.out.println("You win! " + EarnedPoints + " points.");
+				System.out.println("You win! 1 point.");
 			}
 
 			if ((PlayerSpin2 + PlayerSpin1) < (ComputerSpin1 + ComputerSpin2)) {
-				EarnedPoints --;
-				PlayerPoints --;
-				System.out.println("You lose. -" + EarnedPoints + " points.");
+				System.out.println("You lose. -1 point.");
 			}
 
 			else {

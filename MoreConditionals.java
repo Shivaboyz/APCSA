@@ -135,6 +135,7 @@ public class MoreConditionals {
         System.out.println("Find Best fit 4 3 6 is " + mc.findBestFit(4,3,6));
         System.out.println("Find Best fit 4 3 3 is " + mc.findBestFit(4,3,3));
         System.out.println("Find Best fit 4 4 3 is " + mc.findBestFit(4,4,3));
+        // make benches
         System.out.println("makeBenches");
         System.out.println("Make benches 3 1 8 is " + mc.makeBenches(3,1,8));
         System.out.println("Make benches 3 1 9 is " + mc.makeBenches(3,1,9));

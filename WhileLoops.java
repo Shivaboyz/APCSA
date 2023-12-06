@@ -14,9 +14,9 @@ public class WhileLoops {
         int tensnum = 10;
         int sum = 0;
         int adder = 0;
-        while (((10*num)/tensnum) > 0) {
-            adder = (num%tensnum);
-            adder /= (tensnum/10);
+        while (((10 * num) / tensnum) > 0) {
+            adder = (num % tensnum);
+            adder /= (tensnum / 10);
             sum += adder;
             tensnum *= 10;
         }
@@ -24,12 +24,11 @@ public class WhileLoops {
     }
 
     public int howManyYears(double startpop, double endpop) {
-        startpop *= 1000000;
-        endpop *= 1000000;
+        double deltapop = startpop;
         int yearcount = 0;
-        while (startpop >= endpop) {
-            startpop *= 1.0113;
-            yearcount ++;
+        while (deltapop < endpop) {
+            deltapop *= 1.0113;
+            yearcount++;
         }
         return yearcount;
     }
@@ -40,30 +39,21 @@ public class WhileLoops {
         while (queue != num) {
             sum += queue;
             System.out.print(queue + " + ");
-            queue ++;
+            queue++;
         }
-        System.out.println(" = " + (sum+num));
+        System.out.println(num + " = " + (sum + num));
     }
 
     public boolean isPerfectSquare(int num) {
-        int queuenum = 1;
         int adder = 1;
         int sum = 0;
-        while (queuenum != num){
+        while (sum < num) {
             sum += adder;
             adder += 2;
-            queuenum ++;
         }
 
-        if (queuenum == num) {
-            return true;
-        }
-
-        else {
-            return false;
-        }
+        return sum == num;
     }
-
 
     public static void main(String[] args) {
 
@@ -77,14 +67,18 @@ public class WhileLoops {
         System.out.println(loooops.sumDigits(10298));
         System.out.println(loooops.sumDigits(198));
         System.out.println("howManyYears method");
-        System.out.println(loooops.howManyYears(120,150));
-        System.out.println(loooops.howManyYears(169,256));
-        System.out.println(loooops.howManyYears(776,890));
+        System.out.println(loooops.howManyYears(490.9, 632.8));
+        System.out.println(loooops.howManyYears(125.6, 254.5));
+        System.out.println(loooops.howManyYears(193.4, 788.7));
         System.out.println("printSum method");
         loooops.printSum(36);
         loooops.printSum(79);
         loooops.printSum(99);
         System.out.println("isPerfectSquare method");
-        
+        System.out.println(loooops.isPerfectSquare(121));
+        System.out.println(loooops.isPerfectSquare(169));
+        System.out.println(loooops.isPerfectSquare(44));
+        System.out.println(loooops.isPerfectSquare(70));
+
     }
 }

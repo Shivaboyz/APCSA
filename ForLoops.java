@@ -29,7 +29,7 @@ public class ForLoops {
     public void sillyNumbers2(){
         for(int i = 4; i>0; i--) {
             for(int j = 9; j>0; j--) {
-                for(int k = 0; k<9; k++) {
+                for(int k = 0; k<j; k++) {
                     System.out.print(j);
                 }
             }

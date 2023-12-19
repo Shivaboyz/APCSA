@@ -28,58 +28,112 @@ public class AdvancedForLoops {
 
             if ((g%2) == 0) {
 
-        for (int i = g; i>0; i--) {
-            System.out.print(i);
-        }
-        System.out.println();
-        }
+                for (int i = g; i>0; i--) {
+                    System.out.print(i);
+                }
+
+                System.out.println();
+            }
 
             else {
 
-        for (int j = 1; j<=g; j++) {
-            System.out.print(j);
+                for (int j = 1; j<=g; j++) {
+                    System.out.print(j);
+                }
+
+                System.out.println();
+            }
+
         }
+    }
+
+    public void isosceles(int h) {
+
+        for (int m = 1; m<=h; m++) {
+
+            for (int i = (1+(h-m)); i>1; i--) {
+                System.out.print(" ");
+            }
+
+            for (int j = 1; j<= (m-1); j++) {
+                System.out.print(j);
+            }
+
+            for (int v = m; v>(m-1); v--) {
+                System.out.print(v);
+            }
+
+            for(int z = (m-1); z>=1; z--) {
+                System.out.print(z);
+            }
+
+            for (int k = (1+(h-m)); k>1; k--) {
+                System.out.print(" ");
+            }
+
+            System.out.println();
+        }
+    }
+
+    public void upSideDown(int a, int b) {
+
+        for (int i = 0; i<=(a-b); i++) {
+
+            for (int d = i; d>0; d--) {
+                System.out.print(" ");
+            }
+
+            for (int j = (a-(0+i)); j>b; j--) {
+                System.out.print(j);
+            }
+
+            for (int k = b; k>(b-1); k--) {
+                System.out.print(k);
+            }
+
+            for (int m = (b+1); m<=(a-i); m++) {
+                System.out.print(m);
+            }
+            
+            for (int z = (a-(0+i)); z>b; z--) {
+                System.out.print(" ");
+            }
+
+            for (int g = i; g>0; g--) {
+                System.out.print(" ");
+            }
+
+            System.out.println();
+
+        }
+    }
+
+    public static void main(String[]args) {
+        AdvancedForLoops afl = new AdvancedForLoops();
+        System.out.println("eights method");
         System.out.println();
-    }
-
-    }
-}
-
-    public void isosceles(int n) {
-        for (int m = 1; m<=n; m++) {
-        for (int i = (n-m); i>1; i--) {
-            System.out.print(" ");
-        }
-        for (int j = 1; j<= (m-1); j++) {
-            System.out.print(j);
-        }
-        for (int v = m; v>(m-1); v--) {
-            System.out.print(v);
-        }
-        for(int z = (m-1); z>=1; z--) {
-            System.out.print(z);
-        }
-        for (int k = (n-m); k>1; k--) {
-            System.out.print(" ");
-        }
+        afl.eights();
         System.out.println();
-    }
-    }
+        System.out.println("alternate method");
+        afl.alternate(6);
+        afl.alternate(5);
+        afl.alternate(3);
+        afl.alternate(9);
+        System.out.println();
+        System.out.println("isosceles method");
+        System.out.println();
+        afl.isosceles(5);
+        System.out.println();
+        afl.isosceles(9);
+        System.out.println();
+        System.out.println("upSideDown method");
+        System.out.println();
+        afl.upSideDown(9,5);
+        System.out.println();
+        afl.upSideDown(8,6);
+        System.out.println();
+        afl.upSideDown(7,3);
 
-public static void main(String[]args) {
-    AdvancedForLoops afl = new AdvancedForLoops();
-    System.out.println("eights method");
-    afl.eights();
-    System.out.println("alternate method");
-    afl.alternate(6);
-    afl.alternate(5);
-    afl.alternate(3);
-    afl.alternate(9);
-    System.out.println("isosceles method");
-    afl.isosceles(7);
-    afl.isosceles(5);
-    afl.isosceles(9);
-
-}
+    }
 
 }

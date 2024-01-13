@@ -29,14 +29,32 @@ public class StringsExercises {
         String mon = dateStr.substring(0,2);
         String day = dateStr.substring(3,5);
         String year = dateStr.substring(6);
-        return (mon + "-" + day + "-" + year);
+        return (day + "-" + mon + "-" + year);
     }
 
-    public String dateString2(String dateStr) {
+    public String dateString2(String date2) {
         String fin = new String();
-        int firstSpace = dateStr.indexOf("/");
-        int secondSpace = dateStr.indexOf("/", firstSpace);
-        fin += ((dateStr.substring(0,firstSpace)) + "-" + (dateStr.substring()))
+        int firstSlash = date2.indexOf("/");
+        int secondSlash = date2.lastIndexOf("/");
+        fin += ((date2.substring(0,firstSlash)) + "-" + (date2.substring(1+firstSlash, secondSlash)) + "-" + (date2.substring(1+secondSlash)));
+        return fin; 
+    }
+
+    public boolean startsWith(String word, String prefix) {
+        int prefixLength = prefix.length();
+        if (word.length() <= prefixLength) {
+            return false; 
+        }
+
+        String wordPrefix = word.substring(0, (prefixLength+1));
+
+        if (prefix == wordPrefix) {
+            return true;
+        }
+
+        else {
+            return false; 
+        }
     }
 
     public static void main(String[] args) {
@@ -54,17 +72,17 @@ public class StringsExercises {
         System.out.println(se.negative("11111111"));
     
         System.out.println("04/20/2014 becomes " + se.dateString("04/20/2014"));
-        //System.out.println("04/20/2014 becomes " + se.dateString2("04/20/2014"));
-        //System.out.println("4/20/2014 becomes " + se.dateString2("4/20/2014"));
-        //System.out.println("04/2/2014 becomes " + se.dateString2("04/2/2014"));
-        //System.out.println("4/2/2024 becomes " + se.dateString2("4/2/2024"));
+        System.out.println("04/20/2014 becomes " + se.dateString2("04/20/2014"));
+        System.out.println("4/20/2014 becomes " + se.dateString2("4/20/2014"));
+        System.out.println("04/2/2014 becomes " + se.dateString2("04/2/2014"));
+        System.out.println("4/2/2024 becomes " + se.dateString2("4/2/2024"));
     
-        //System.out.println("\nstartsWith");
-        //System.out.println(se.startsWith("architecture", "arch"));
-        //System.out.println(se.startsWith("architecture", "a"));
-        //System.out.println(se.startsWith("arch", "architecture"));
-        //System.out.println(se.startsWith("architecture", "rch"));
-        //System.out.println(se.startsWith("architecture", "architecture"));
+        System.out.println("\nstartsWith");
+        System.out.println(se.startsWith("architecture", "arch"));
+        System.out.println(se.startsWith("architecture", "a"));
+        System.out.println(se.startsWith("arch", "architecture"));
+        System.out.println(se.startsWith("architecture", "rch"));
+        System.out.println(se.startsWith("architecture", "architecture"));
     
         //System.out.println("\nendsWith");
         //System.out.println(se.endsWith("astronomy", "nomy"));

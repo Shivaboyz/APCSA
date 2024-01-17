@@ -1,24 +1,20 @@
 public class StringsExercises {
 
     public String scroll(String word) {
-        String fin = new String();
-        fin += ((word.substring(1)) + (word.charAt(0)));
+        String fin = ((word.substring(1)) + (word.charAt(0)));
         return fin;
     }
 
     public String convertName(String name) {
-        String ln = new String();
-        String fn = new String();
-        ln += name.substring(0, name.indexOf(","));
-        fn += name.substring(1+name.indexOf(","));
+        String ln = name.substring(0, name.indexOf(","));
+        String fn = name.substring(1+name.indexOf(","));
         fn = fn.trim();
         ln = ln.trim();
         return (fn + " " + ln);
     }
 
     public String negative(String num) {
-        String fin = new String();
-        fin += num; 
+        String fin = num; 
         fin = fin.replace("1","2");
         fin = fin.replace("0", "1");
         fin = fin.replace("2", "0");
@@ -33,28 +29,33 @@ public class StringsExercises {
     }
 
     public String dateString2(String date2) {
-        String fin = new String();
         int firstSlash = date2.indexOf("/");
         int secondSlash = date2.lastIndexOf("/");
-        fin += ((date2.substring(0,firstSlash)) + "-" + (date2.substring(1+firstSlash, secondSlash)) + "-" + (date2.substring(1+secondSlash)));
+        String fin = ((date2.substring(0,firstSlash)) + "-" + (date2.substring(1+firstSlash, secondSlash)) + "-" + (date2.substring(1+secondSlash)));
         return fin; 
     }
 
     public boolean startsWith(String word, String prefix) {
         int prefixLength = prefix.length();
-        if (word.length() <= prefixLength) {
-            return false; 
-        }
+        if (word.length() <= prefixLength) return false; 
+        String wordPrefix = word.substring(0, (prefixLength));
+        if (prefix.equals(wordPrefix)) return true;
+        else return false;
+    }
 
-        String wordPrefix = word.substring(0, (prefixLength+1));
+    public boolean endsWith(String word, String suffix) {
+        int suffixLength = suffix.length();
+        if (word.length() <= suffixLength) return false;
+        String wordSuffix = word.substring(word.length() - suffixLength);
+        if (suffix.equals(wordSuffix)) return true;
+        else return false;
+    }
 
-        if (prefix == wordPrefix) {
-            return true;
-        }
-
-        else {
-            return false; 
-        }
+    public String removeTag(String s, String tag) {
+        //String innerTag = tag.substring(tag.indexOf("<"), tag.indexOf(">"));
+        String firstTag = s.substring(s.indexOf("<"), s.indexOf(">"));
+        if (firstTag.equals(tag)) return s.substring(s.indexOf(">"), s.lastIndexOf("<"));
+        else return s; 
     }
 
     public static void main(String[] args) {
@@ -84,22 +85,22 @@ public class StringsExercises {
         System.out.println(se.startsWith("architecture", "rch"));
         System.out.println(se.startsWith("architecture", "architecture"));
     
-        //System.out.println("\nendsWith");
-        //System.out.println(se.endsWith("astronomy", "nomy"));
-        //System.out.println(se.endsWith("astronomy", "y"));
-        //System.out.println(se.endsWith("astronomy", "nom"));
-        //System.out.println(se.endsWith("nomy", "astronomy"));
-        //System.out.println(se.endsWith("astronomy", "astronomy"));
+        System.out.println("\nendsWith");
+        System.out.println(se.endsWith("astronomy", "nomy"));
+        System.out.println(se.endsWith("astronomy", "y"));
+        System.out.println(se.endsWith("astronomy", "nom"));
+        System.out.println(se.endsWith("nomy", "astronomy"));
+        System.out.println(se.endsWith("astronomy", "astronomy"));
     
-        //System.out.println("\nremoveTag");
-        //System.out.println(se.removeTag("<b>Hello World</b>", "b"));
-        //System.out.println(se.removeTag("<b>Hello World</b>", "head"));
-        //System.out.println(se.removeTag("Hello World</b>", "b"));
-        //System.out.println(se.removeTag("<b>Hello World", "b"));
-        //System.out.println(se.removeTag("</img>Hello World<img>", "img"));
-        //System.out.println(se.removeTag("Happy Birthday <b>Hello World</b>", "b"));
-        //System.out.println(se.removeTag("<title>Hello World</title> Happy Birthday", "title"));
-        //System.out.println(se.removeTag("Happy <b>Hello World</b> Birthday", "b"));
+        System.out.println("\nremoveTag");
+        System.out.println(se.removeTag("<b>Hello World</b>", "b"));
+        System.out.println(se.removeTag("<b>Hello World</b>", "head"));
+        System.out.println(se.removeTag("Hello World</b>", "b"));
+        System.out.println(se.removeTag("<b>Hello World", "b"));
+        System.out.println(se.removeTag("</img>Hello World<img>", "img"));
+        System.out.println(se.removeTag("Happy Birthday <b>Hello World</b>", "b"));
+        System.out.println(se.removeTag("<title>Hello World</title> Happy Birthday", "title"));
+        System.out.println(se.removeTag("Happy <b>Hello World</b> Birthday", "b"));
         
     }
 

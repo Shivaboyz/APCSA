@@ -52,9 +52,9 @@ public class StringsExercises {
     }
 
     public String removeTag(String s, String tag) {
-        //String innerTag = tag.substring(tag.indexOf("<"), tag.indexOf(">"));
-        String firstTag = s.substring(s.indexOf("<"), s.indexOf(">"));
-        if (firstTag.equals(tag)) return s.substring(s.indexOf(">"), s.lastIndexOf("<"));
+        String firstTag = s.substring(s.indexOf("<")+1, s.indexOf(">"));
+        String secondTag = s.substring(s.lastIndexOf("<")+1, s.lastIndexOf(">"));
+        if ((firstTag.equals(tag)) && (secondTag.equals("/" + tag))) return (s.substring(s.indexOf(">")+1, s.lastIndexOf("<")));
         else return s; 
     }
 

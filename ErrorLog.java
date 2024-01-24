@@ -5,8 +5,8 @@ public class ErrorLog {
 	
 	/** Precondition: message is a valid Error log entry */
 	public ErrorLog(String message) {
-        machineId = message.substring(0, String.indexOf(":"));
-        description = message.substring((String.indexOf(":") + 1));
+        machineId = message.substring(0, message.indexOf(":"));
+        description = message.substring((message.indexOf(":") + 1));
 	}
 
 	/** Returns true if the description in this error log entry
@@ -14,19 +14,26 @@ public class ErrorLog {
 	 * Postcondition: the description is unchanged
 	 */
 	public boolean containsKey(String keyword) {
-        String tester = new String();
+		String tester = new String();
 		int desLength = description.length();
 		int keyLength = keyword.length();
 		int indKey = description.indexOf(keyword);
-		if (indKey == -1) return false; 
+
+		if (indKey == -1) return false;
+		else if (description.equals(keyword)) return true; 
         else if (indKey == 0) {
-			return (((description.charAt(keyLength)).equals "") || ((description.charAt(keyLength)).equals " "));
+			tester += description.charAt(keyLength);
+			return ((tester.equals("")) || (tester.equals(" ")));
         }
 		else if (indKey == (desLength-keyLength)) {
-			return (((description.charAt(desLength-keyLength-1)).equals "") || ((description.charAt(desLength-keyLength-1)).equals " "));
+			tester += description.charAt(desLength-keyLength-1);
+			return (tester.equals("")) || (tester.equals(" "));
 		}
 		else {
-			return (((description.charAt(indKey-1)).equals " ") && ((description.charAt(indKey+1)).equals " "))
+			String tester2 = new String();
+			tester += description.charAt(indKey-1);
+			tester2 += description.charAt(indKey+keyLength);
+			return (tester.equals(" ")) && (tester2.equals(" "));
 		}
     }
 		

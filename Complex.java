@@ -67,8 +67,10 @@ public class Complex {
         System.out.println(com.toString());
         System.out.println(com2.toString());
         System.out.println(com.multiply(com2));
-
-
+        System.out.println(com.add(1.97));
+        System.out.println(com2.add(3.476));
+        System.out.println(com.multiply(5.648));
+        System.out.println(com2.multiply(7.4938));
     }
 
 }

@@ -36,26 +36,14 @@ public class CarCharger {
      */
     public int getChargingCost(int startHour, int numHours){
         int sum = 0;
-        if ((startHour+numHours)>23) {
-            for(int i = startHour; i<=23; i++) {
-                sum += rateTable[i];
-            }
-            for(int j = 0; j<=(startHour+numHours-24); j++) {
-                sum += rateTable[j];
-            }
+        int counter = startHour; 
+        if(numHours==1) return (rateTable[startHour]);
+        for(int i = startHour; i<(startHour+numHours); i++) {
+            sum += rateTable[counter];
+            counter++;
+            if(counter>23) counter = 0;
         }
-        else if (numHours>23) {
-
-        }
-        else if (numHours==1) {
-            sum += rateTable[startHour];
-        }
-        else {
-            for (int k = startHour; k<=(startHour+numHours-1); k++) {
-                sum += rateTable[k];
-            }
-        }
-        return sum;
+        return sum; 
     }
 
     /** Determines the start time to charge the car at the
@@ -64,8 +52,18 @@ public class CarCharger {
      *               Precondition:  hours > 0
      * @return an optimal start time with 0 <= returned value <= 23
      */
-    public int getChargeStartTime(int hours){
-        return 0;
+   public int getChargeStartTime(int hours){
+        int loww = 0;
+        int testerNaught = getChargingCost(0,hours);
+        int testerCost2 = 0;
+        for(int i = 1; i<=23; i++) {
+            testerCost2 = getChargingCost(i,hours);
+            if(testerCost2<testerNaught) {
+                loww = i;
+                testerNaught = testerCost2; 
+            } 
+        }
+        return loww;
     }
 
 }

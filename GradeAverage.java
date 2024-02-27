@@ -30,20 +30,38 @@ public class GradeAverage {
 	
 	// returns true if each successive value in scores is greater than
 	// or equal to the previous value.  Otherwise returns false
-	private boolean showsImprovement()
-	{
-		// part b
-		return false;   // replace this
+	private boolean showsImprovement(){
+		int tester1 = 0;
+		int tester2 = 0;
+		for(int i = 0; i<=(scores.length-2); i++) {
+			tester1 = scores[i];
+			tester2 = scores[i+1];
+			if(tester1>tester2) return false;
+		}
+		return true;
 	}
 	
 	// if the values in the scores array show improvement, returns the
 	// average of the elements in scores with indexes greater than or
 	// equal to scores.length()/2
-	public double finalGrade()
-	{
-		// part c
-		return 0.0;   // replace this
+	public double finalGrade(){
+		double sum = 0.0;
+		if((this.showsImprovement()) == true) {
+			for(int i = (scores.length/2)-1; i<=(scores.length-1); i++) {
+				sum += (double)scores[i];
+			}
+			sum /= (scores.length/2);
+		}
+		else {
+			for(int i = 0; i<=(scores.length-1); i++) {
+				sum += (double)scores[i];
+			}
+			sum /= scores.length;
+		}
+		return sum;
 	}
+
+
 	public static void main(String[] args) {
 		int [] s1 = {50,50,20,80,53};   // not improved, finalGrade is 50.6
 		int [] s2 = {20,50,50,53,80};   // improved, final grade is 61.0

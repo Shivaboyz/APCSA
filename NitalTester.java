@@ -60,7 +60,7 @@ public class NitalTester {
      * Postcondition: arr2D is unchanged.
      */
     public static int[] getColumn(int[][] arr2D, int c) {
-        int[] fin = new int[arr2D[c - 1].length];
+        int[] fin = new int[arr2D[1].length];
         for (int i = 0; i < fin.length; i++) {
             fin[i] = arr2D[i][c];
         }
@@ -79,33 +79,15 @@ public class NitalTester {
      * square has at least one row.
      */
     public static boolean isNital(int[][] square) {
+        if (containsRepeats(square[0]) == true)
+            return false;
         int length = square.length;
-        int[] tester = new int[square[1].length];
-        for (int i = 1; i < length; i++) {
-            for (int j = 0; j < length; j++) {
-                for (int k = 0; k < length; k++) {
-                    if (square[i][j] == square[0][k])
-                        break;
-                    return false;
-                }
-            }
-        }
-        for (int z = 0; z < length; z++) {
-            tester = getColumn(square, z);
-            for (int t = 0; t < length; t++) {
-                for (int r = 0; r < length; r++) {
-                    if (square[0][r] == tester[t])
-                        break;
-                    return false;
-                }
-            }
-        }
-
-        for (int q = 0; q < length - 1; q++) {
-            if (square[0][q] == square[0][q + 1])
+        for (int i = 0; i < length; i++) {
+            if (hasAllValues(square[0], square[i]) == false)
+                return false;
+            if (hasAllValues(square[0], getColumn(square, i)) == false)
                 return false;
         }
-
         return true;
     }
 

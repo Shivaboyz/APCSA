@@ -24,15 +24,14 @@ public class WordPuzzle {
      * Precondition: r and c are valid indexes in blackBoxes
      */
     public boolean toBeLabeled(int r, int c, boolean[][] blackBoxes) {
-        int rReal = r - 1;
-        int cReal = c - 1;
-        if (c == 0 || r == 0)
-            return true;
-        else if (blackBoxes[r][c] == true)
+        if (blackBoxes[r][c] == true)
             return false;
-        else if ((blackBoxes[r][cReal] == true) || (blackBoxes[rReal][c] == true))
+        else if (r == 0 || c == 0)
             return true;
-        return false;
+        else if ((blackBoxes[r - 1][c] == true) || (blackBoxes[r][c - 1] == true))
+            return true;
+        else
+            return false;
     }
 
     /*

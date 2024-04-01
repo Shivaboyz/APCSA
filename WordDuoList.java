@@ -39,20 +39,15 @@ public class WordDuoList {
      * Precondition:  word.length >2
      */
     public WordDuoList(String[] words){
-        int counter = 0;
-        for(int i = 0; i<words.length; i++) {
-            for(int j = 0+i; j<words.length-1; j++) {
-                WordDuo holder = new WordDuo(words[i], words[i+1]);
-                allDuos.add(counter, holder);
-                counter++;
-            }
-        }
-        for(int k = 0; k<allDuos.size(); k++) {
-            for(int t = 1+k; t<allDuos.size(); t++) {
-                if(allDuos.get(k).equals(allDuos.get(t))) allDuos.remove(t);
+        for(int i = 0; i<words.length-1; i++) {
+            for(int j = 1+i; j<words.length; j++) {
+                WordDuo holder = new WordDuo(words[i], words[j]);
+                allDuos.add(holder);
             }
         }
     }
+
+    
     public String toString(){
         String s = "";
         for (WordDuo wd: allDuos){
@@ -78,9 +73,15 @@ public class WordDuoList {
     ("fox", "red"), ("the", "red")
      */
     public int numMatches(){
+        int counter = 0; 
+        String tester1 = new String();
+        String tester2 = new String();
         for(int i = 0; i<allDuos.size(); i++) {
-            for(int j = 1; ) {}
+            tester1 = (allDuos.get(i)).getFirst();
+            tester2 = (allDuos.get(i)).getSecond(); 
+            if(tester1.equals(tester2)) counter++;
         }
+        return counter; 
     }
 
     /*Write the method moveMatchesToTop()  THis method will look for
@@ -94,10 +95,14 @@ public class WordDuoList {
 
      */
     public void moveMatchesToTop(){
-        /* part c */
-        
-		
-		
+        WordDuo holder = null; 
+        for(int i = 0; i<allDuos.size(); i++) {
+            holder = allDuos.get(i);
+            if(holder.getFirst() != holder.getSecond()){
+                allDuos.remove(holder);
+                allDuos.add(holder);
+            }
+        }
     }
 
     public static void main(String[] args){

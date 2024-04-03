@@ -39,6 +39,7 @@ public class WordDuoList {
      * Precondition:  word.length >2
      */
     public WordDuoList(String[] words){
+        allDuos = new ArrayList<WordDuo>();
         for(int i = 0; i<words.length-1; i++) {
             for(int j = 1+i; j<words.length; j++) {
                 WordDuo holder = new WordDuo(words[i], words[j]);
@@ -96,12 +97,16 @@ public class WordDuoList {
      */
     public void moveMatchesToTop(){
         WordDuo holder = null; 
-        for(int i = 0; i<allDuos.size(); i++) {
+        int i = 0;
+        int sz = allDuos.size(); 
+        while(i<sz) {
             holder = allDuos.get(i);
-            if(holder.getFirst() != holder.getSecond()){
-                allDuos.remove(holder);
-                allDuos.add(holder);
+            if(holder.getFirst().equals(holder.getSecond())){
+                allDuos.remove(i);
+                allDuos.add(0,holder);
+                i--;
             }
+            i++;
         }
     }
 

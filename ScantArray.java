@@ -14,88 +14,111 @@ public class ScantArray {
     private int numRows;
     private int numColumns;
 
-    /** The list of entries representing the non-zero elements of
-     * the scant array.  Entries are stored in no particular order.
+    /**
+     * The list of entries representing the non-zero elements of
+     * the scant array. Entries are stored in no particular order.
      */
     private ArrayList<ScantArrayEntry> entries;
 
     /** constructor */
-    public ScantArray(int r, int c){
+    public ScantArray(int r, int c) {
         numRows = r;
         numColumns = c;
         entries = new ArrayList<ScantArrayEntry>();
     }
 
-    /** Accessors - return the number or rows/columns in the array*/
-    public int getNumRows(){return numRows;}
-    public int getNumColumns(){return numColumns;}
+    /** Accessors - return the number or rows/columns in the array */
+    public int getNumRows() {
+        return numRows;
+    }
+
+    public int getNumColumns() {
+        return numColumns;
+    }
 
     /** Adds a new entry to the array */
-    public void addEntry(int row, int col, int val){
+    public void addEntry(int row, int col, int val) {
         entries.add(new ScantArrayEntry(row, col, val));
     }
 
-    /** Returns the value of the element at position (row, column)
+    /**
+     * Returns the value of the element at position (row, column)
      * in the sparse array
+     * 
      * @param row
      * @param col
-     * @return   the value in the array
-     * Precondition:  0 <= row < getNumRows()
-     *                0 <= col < getNumColumns()
+     * @return the value in the array
+     *         Precondition: 0 <= row < getNumRows()
+     *         0 <= col < getNumColumns()
      */
-    public int getValueAt(int row, int col){
-        /* part a */
-        
-		
-		
-        return 0;    // replace this
+    public int getValueAt(int row, int col) {
+        int sz = entries.size();
+        ScantArrayEntry holder = null;
+        for (int i = 0; i < sz; i++) {
+            holder = entries.get(i);
+            if ((holder.getRow() == row) && (holder.getColumn() == col)) {
+                return holder.getValue();
+            }
+        }
+        return 0;
     }
 
-    /** Removes a column from the scant array and shifts
+    /**
+     * Removes a column from the scant array and shifts
      * columns to the right of col one column to the left.
      * (see description in word doc.
+     * 
      * @param col
-     * Precondition:  0 <= col < getNumColumns()
+     *            Precondition: 0 <= col < getNumColumns()
      */
-    public void removeColumn(int col){
-        /* part b */
-        
-		
-		
-		
+    public void removeColumn(int col) {
+        for (int i = 0; i < entries.size(); i++) {
+            ScantArrayEntry holder = entries.get(i);
+            if (holder.getColumn() == col) {
+                entries.remove(i);
+            }
+            if (holder.getColumn() > col) {
+                entries.remove(holder);
+                addEntry(holder.getRow(), holder.getColumn() - 1, holder.getValue());
+            }
+        }
+        numColumns--;
     }
 
-    /** Allows the ScantArray to be printed.  The
-     * result should look like a 2D array.  Entries
-     * not represented should display 0.  Ex:
+    /**
+     * Allows the ScantArray to be printed. The
+     * result should look like a 2D array. Entries
+     * not represented should display 0. Ex:
      * 0 0 3 0 2
      * 1 0 0 0 0
      * 0 0 3 4 0
      *
      * @return
      */
-    public String toString(){
+    public String toString() {
         /* part c */
         String s = "";
-
-        
-		
-		
+        for (int i = 0; i < numRows; i++) {
+            for (int j = 0; j < numColumns; j++) {
+                s += getValueAt(i, j) + " ";
+            }
+            s += ("\n");
+        }
         return s;
     }
 
-    public static void main(String[] args){
-        ScantArray sa1 = new ScantArray(4,5);
-        sa1.addEntry(1,4,4);
-        sa1.addEntry(2,0,1);
-        sa1.addEntry(3,1,-9);
-        sa1.addEntry(1,1,5);
+    public static void main(String[] args) {
+        ScantArray sa1 = new ScantArray(4, 5);
+        sa1.addEntry(1, 4, 4);
+        sa1.addEntry(2, 0, 1);
+        sa1.addEntry(3, 1, -9);
+        sa1.addEntry(1, 1, 5);
 
-        System.out.println(sa1.getValueAt(2,0));
-        System.out.println(sa1.getValueAt(3,1));
-        System.out.println(sa1.getValueAt(2,3));
-        System.out.println("rows "+ sa1.getNumRows());
-        System.out.println("columns "+ sa1.getNumColumns());
+        System.out.println(sa1.getValueAt(2, 0));
+        System.out.println(sa1.getValueAt(3, 1));
+        System.out.println(sa1.getValueAt(2, 3));
+        System.out.println("rows " + sa1.getNumRows());
+        System.out.println("columns " + sa1.getNumColumns());
 
         System.out.println(sa1);
 
